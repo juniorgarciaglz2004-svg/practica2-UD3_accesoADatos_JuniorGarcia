@@ -1,0 +1,141 @@
+package practica;
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.Objects;
+
+@Entity
+@Table(name = "kit_educativo", schema = "practica2_3ud", catalog = "")
+public class KitEducativo {
+    private int idKit;
+    private String nombre;
+    private String descripcion;
+    private int cantidad;
+    private Date fechaDeCreacion;
+    private Date fechaDeActualizacion;
+    private BigDecimal precio;
+    private int valoracion;
+    private Empresa idEmpresa;
+    private Producto idProducto;
+
+    @Id
+    @Column(name = "id_kit", nullable = false)
+    public int getIdKit() {
+        return idKit;
+    }
+
+    public void setIdKit(int idKit) {
+        this.idKit = idKit;
+    }
+
+    @Basic
+    @Column(name = "nombre", nullable = false, length = 50)
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Basic
+    @Column(name = "descripcion", nullable = false, length = 200)
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    @Basic
+    @Column(name = "cantidad", nullable = false)
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    @Basic
+    @Column(name = "fecha_de_creacion", nullable = true)
+    public Date getFechaDeCreacion() {
+        return fechaDeCreacion;
+    }
+
+    public void setFechaDeCreacion(Date fechaDeCreacion) {
+        this.fechaDeCreacion = fechaDeCreacion;
+    }
+
+    @Basic
+    @Column(name = "fecha_de_actualizacion", nullable = true)
+    public Date getFechaDeActualizacion() {
+        return fechaDeActualizacion;
+    }
+
+    public void setFechaDeActualizacion(Date fechaDeActualizacion) {
+        this.fechaDeActualizacion = fechaDeActualizacion;
+    }
+
+    @Basic
+    @Column(name = "precio", nullable = false, precision = 2)
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    @Basic
+    @Column(name = "valoracion", nullable = false)
+    public int getValoracion() {
+        return valoracion;
+    }
+
+    public void setValoracion(int valoracion) {
+        this.valoracion = valoracion;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        KitEducativo that = (KitEducativo) o;
+        return idKit == that.idKit &&
+                cantidad == that.cantidad &&
+                valoracion == that.valoracion &&
+                Objects.equals(nombre, that.nombre) &&
+                Objects.equals(descripcion, that.descripcion) &&
+                Objects.equals(fechaDeCreacion, that.fechaDeCreacion) &&
+                Objects.equals(fechaDeActualizacion, that.fechaDeActualizacion) &&
+                Objects.equals(precio, that.precio);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idKit, nombre, descripcion, cantidad, fechaDeCreacion, fechaDeActualizacion, precio, valoracion);
+    }
+
+    @ManyToOne // <--- Cambiado de OneToOne a ManyToOne
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", nullable = false)
+    public Empresa getIdEmpresa() {
+        return idEmpresa;
+    }
+
+    public void setIdEmpresa(Empresa idEmpresa) {
+        this.idEmpresa = idEmpresa;
+    }
+
+    @ManyToOne // <--- Cambiado de OneToOne a ManyToOne
+    @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false)
+    public Producto getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Producto idProducto) {
+        this.idProducto = idProducto;
+    }
+}
