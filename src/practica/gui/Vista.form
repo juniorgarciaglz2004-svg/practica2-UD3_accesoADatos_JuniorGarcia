@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.Vista">
+  <grid id="27dc6" binding="panel1" layout-manager="FormLayout">
+    <rowspec value="center:max(d;4px):noGrow"/>
+    <colspec value="fill:d:grow"/>
+    <constraints>
+      <xy x="20" y="20" width="773" height="440"/>
+    </constraints>
+    <properties>
+      <foreground color="-14776091"/>
+    </properties>
+    <border type="line" title="TIENDA DE ROBOTICA Y KITS EDUCATIVOS PARA NIÑOS" title-justification="2" title-position="1">
+      <font name="Courier New" size="16" style="3"/>
+      <color color="-723719"/>
+    </border>
+    <children>
+      <tabbedpane id="ee05f" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="200" height="200"/>
+          </grid>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties>
+          <background color="-8740409"/>
+          <enabled value="true"/>
+          <font name="Fira Code" size="12" style="1"/>
+          <foreground color="-1"/>
+        </properties>
+        <border type="bevel-raised"/>
+        <children>
+          <grid id="3f51b" layout-manager="FormLayout">
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:d:grow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:d:grow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <constraints>
+              <tabbedpane title="PRODUCTO"/>
+            </constraints>
+            <properties>
+              <background color="-9078080"/>
+              <foreground color="-723719"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="aa338" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="NOMBRE"/>
+                </properties>
+              </component>
+              <component id="8d2ae" class="javax.swing.JTextField" binding="nombreProducto">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <font name="Fira Code" size="14" style="0"/>
+                  <foreground color="-2039584"/>
+                  <text value=""/>
+                  <toolTipText value="Introduzca el nombre&#10;"/>
+                </properties>
+              </component>
+              <component id="5f3c3" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="DESCRIPCION"/>
+                </properties>
+              </component>
+              <component id="d2ef5" class="javax.swing.JButton" binding="anadir_PRODUCTOSButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <background color="-12345273"/>
+                  <enabled value="true"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-723719"/>
+                  <hideActionText value="false"/>
+                  <text value="AÑADIR"/>
+                </properties>
+              </component>
+              <component id="e870d" class="javax.swing.JTextField" binding="descripcionProducto">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="5" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <font name="Fira Code" size="14" style="0"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca la descripcion&#10;&#10;"/>
+                </properties>
+              </component>
+              <component id="27bb9" class="javax.swing.JButton" binding="eliminar_ProductosButton">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1754827"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-1"/>
+                  <text value="ELIMINAR"/>
+                </properties>
+              </component>
+              <component id="eb226" class="javax.swing.JButton" binding="modificar_ProductosButton">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-15374912"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-1"/>
+                  <text value="MODIFICAR"/>
+                </properties>
+                <clientProperties>
+                  <html.disable class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+              <component id="83499" class="javax.swing.JCheckBox" binding="productosEstadoNuevos">
+                <constraints>
+                  <grid row="2" column="14" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9933392"/>
+                  <font name="DialogInput" size="12" style="2"/>
+                  <foreground color="-1"/>
+                  <text value="NUEVO"/>
+                </properties>
+              </component>
+              <component id="948b2" class="javax.swing.JCheckBox" binding="productosEstadoReacondicionados">
+                <constraints>
+                  <grid row="2" column="16" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9933392"/>
+                  <font name="DialogInput" size="12" style="2"/>
+                  <foreground color="-1"/>
+                  <text value="REACONDICIONADO"/>
+                </properties>
+              </component>
+              <scrollpane id="9097c">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="17" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <background color="-12828863"/>
+                  <font name="Consolas" size="12" style="1"/>
+                  <foreground color="-723719"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2eeaf" class="javax.swing.JTable" binding="tablaProductos">
+                    <constraints/>
+                    <properties>
+                      <background color="-8878970"/>
+                      <font name="Fira Code" size="12" style="1"/>
+                      <foreground color="-14803418"/>
+                      <gridColor color="-10328729"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="ede63" class="javax.swing.JTextField" binding="marcaProducto">
+                <constraints>
+                  <grid row="6" column="4" row-span="1" col-span="9" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <font name="Fira Code" size="14" style="0"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca la marca&#10;&#10;"/>
+                </properties>
+              </component>
+              <component id="37fc1" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="MARCA"/>
+                </properties>
+              </component>
+              <component id="33e0f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="ESTADO"/>
+                  <toolTipText value="Selecciona uno de los estados &#10;"/>
+                </properties>
+              </component>
+              <component id="f533a" class="javax.swing.JCheckBox" binding="productoEstadoUsado">
+                <constraints>
+                  <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9933392"/>
+                  <font name="DialogInput" size="12" style="2"/>
+                  <foreground color="-1"/>
+                  <text value="USADO"/>
+                </properties>
+              </component>
+              <component id="949ca" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="MODELO"/>
+                </properties>
+              </component>
+              <component id="d50c3" class="javax.swing.JTextField" binding="modeloProducto">
+                <constraints>
+                  <grid row="4" column="10" row-span="1" col-span="7" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <font name="Fira Code" size="14" style="0"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca el modelo&#10;"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="1d729" layout-manager="FormLayout">
+            <rowspec value="center:d:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <tabbedpane title="KITS"/>
+            </constraints>
+            <properties>
+              <background color="-9078080"/>
+              <foreground color="-723719"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="828a6" class="javax.swing.JButton" binding="anadir_KitsButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-12345273"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-723719"/>
+                  <text value="AÑADIR"/>
+                </properties>
+              </component>
+              <component id="85aed" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="NOMBRE"/>
+                </properties>
+              </component>
+              <component id="85117" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="CANTIDAD"/>
+                </properties>
+              </component>
+              <component id="d6b2a" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="FECHA_ACTUALIZACION"/>
+                </properties>
+              </component>
+              <component id="7600f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="PRODUCTO_KITS"/>
+                </properties>
+              </component>
+              <component id="7f1c2" class="javax.swing.JButton" binding="eliminar_KitsButton">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1754827"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-723719"/>
+                  <text value="ELIMINAR"/>
+                </properties>
+              </component>
+              <component id="1903a" class="javax.swing.JButton" binding="modificar_KitsButton">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-15374912"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-724231"/>
+                  <text value="MODIFICAR"/>
+                </properties>
+              </component>
+              <component id="95681" class="javax.swing.JTextField" binding="nombreKit">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca el nombre&#10;"/>
+                </properties>
+              </component>
+              <component id="5564a" class="javax.swing.JTextField" binding="cantidadKit">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <text value=""/>
+                  <toolTipText value="Introduzca la cantidad&#10;&#10;"/>
+                </properties>
+              </component>
+              <component id="2f8e8" class="com.github.lgooddatepicker.components.DatePicker" binding="fecha_ActualizacionKits">
+                <constraints>
+                  <grid row="8" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <toolTipText value="Introduzca la fecha de actualizacion"/>
+                </properties>
+              </component>
+              <component id="8b91f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="DESCRIPCION"/>
+                </properties>
+              </component>
+              <component id="ae3f8" class="javax.swing.JTextField" binding="descripcionKit">
+                <constraints>
+                  <grid row="2" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca la descripcion&#10;"/>
+                </properties>
+              </component>
+              <component id="d992f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="EMPRESA_KITS"/>
+                </properties>
+              </component>
+              <component id="2534d" class="javax.swing.JComboBox" binding="comboBoxEmpresaKit">
+                <constraints>
+                  <grid row="4" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Selecciona uno de los empresa creados"/>
+                </properties>
+              </component>
+              <component id="87814" class="javax.swing.JComboBox" binding="comboBoxProductoKits">
+                <constraints>
+                  <grid row="6" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Selecciona uno de los productos creados&#10;&#10;"/>
+                </properties>
+              </component>
+              <component id="bdbb" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="FECHA_CREACION"/>
+                </properties>
+              </component>
+              <component id="9e8b1" class="com.github.lgooddatepicker.components.DatePicker" binding="fecha_CreacionKits">
+                <constraints>
+                  <grid row="6" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <toolTipText value="Introduzca la fecha de creacion"/>
+                </properties>
+              </component>
+              <component id="91340" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="8" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="PRECIO"/>
+                </properties>
+              </component>
+              <component id="bdb94" class="javax.swing.JTextField" binding="precioKit">
+                <constraints>
+                  <grid row="8" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca el precio"/>
+                </properties>
+              </component>
+              <component id="de4b5" class="javax.swing.JSlider" binding="valoracionSliderKit">
+                <constraints>
+                  <grid row="10" column="6" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9933392"/>
+                  <maximum value="10"/>
+                  <minimum value="1"/>
+                  <orientation value="0"/>
+                  <paintLabels value="false"/>
+                  <toolTipText value="Arrastra del 1 al 10 el valor que quiera seleccionar"/>
+                  <value value="10"/>
+                </properties>
+              </component>
+              <scrollpane id="d64c6">
+                <constraints>
+                  <grid row="12" column="0" row-span="1" col-span="9" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="f5a5a" class="javax.swing.JTable" binding="tablaKits">
+                    <constraints/>
+                    <properties>
+                      <background color="-8878970"/>
+                      <font name="Fira Code" size="12" style="1"/>
+                      <foreground color="-14803418"/>
+                      <gridColor color="-10328729"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="6e61c" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="10" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="VALORACION"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="fcb1f" layout-manager="FormLayout">
+            <rowspec value="center:d:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:grow"/>
+            <colspec value="fill:d:noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:max(d;4px):noGrow"/>
+            <colspec value="left:4dlu:noGrow"/>
+            <colspec value="fill:d:grow"/>
+            <constraints>
+              <tabbedpane title="EMPRESA"/>
+            </constraints>
+            <properties>
+              <background color="-9078080"/>
+              <foreground color="-723719"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="3bb35" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="NOMBRE"/>
+                </properties>
+              </component>
+              <component id="a6acd" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="UBICACION"/>
+                </properties>
+              </component>
+              <component id="62135" class="javax.swing.JButton" binding="eliminar_EmpresaButton">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-1754827"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-723719"/>
+                  <text value="ELIMINAR"/>
+                </properties>
+              </component>
+              <component id="5c92c" class="javax.swing.JTextField" binding="nombreEmpresa">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca el nombre"/>
+                </properties>
+              </component>
+              <component id="77efd" class="com.github.lgooddatepicker.components.DatePicker" binding="fecha_creacion_Empresa">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <toolTipText value="Introduzca la fecha de creacion&#10;"/>
+                </properties>
+              </component>
+              <component id="a5f91" class="javax.swing.JButton" binding="modificar_EmpresaButton">
+                <constraints>
+                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-15374912"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-1"/>
+                  <hideActionText value="false"/>
+                  <text value="MODIFICAR"/>
+                </properties>
+              </component>
+              <component id="b1314" class="javax.swing.JButton" binding="anadir_EmpresaButton">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-12345273"/>
+                  <font name="Lucida Sans Typewriter" size="12" style="3"/>
+                  <foreground color="-723719"/>
+                  <text value="AÑADIR"/>
+                </properties>
+              </component>
+              <component id="93907" class="javax.swing.JTextField" binding="ubicacionEmpresa">
+                <constraints>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <text value=""/>
+                  <toolTipText value="Introduzca la ubicacion&#10;&#10;"/>
+                </properties>
+              </component>
+              <scrollpane id="b1c24">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="7" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="f85c2" class="javax.swing.JTable" binding="tablaEmrpresa">
+                    <constraints/>
+                    <properties>
+                      <background color="-8878970"/>
+                      <font name="Fira Code" size="12" style="1"/>
+                      <foreground color="-14803418"/>
+                      <gridColor color="-10328729"/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="cfb47" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="6" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="VALORACION"/>
+                </properties>
+              </component>
+              <component id="96a" class="javax.swing.JSlider" binding="valoracionSliderEmpresa">
+                <constraints>
+                  <grid row="6" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9933392"/>
+                  <maximum value="10"/>
+                  <minimum value="1"/>
+                  <toolTipText value="Arrastra del 1 al 10 el valor que quiera seleccionar&#10;"/>
+                </properties>
+              </component>
+              <component id="4a13f" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="DESCRIPCION"/>
+                </properties>
+              </component>
+              <component id="b0257" class="javax.swing.JTextField" binding="descripcionEmpresa">
+                <constraints>
+                  <grid row="2" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="-1"/>
+                  </grid>
+                  <forms defaultalign-horz="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9143685"/>
+                  <foreground color="-2039584"/>
+                  <toolTipText value="Introduzca la descripcion&#10;"/>
+                </properties>
+              </component>
+              <component id="f69f2" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms/>
+                </constraints>
+                <properties>
+                  <font name="Droid Sans Mono" size="12" style="1"/>
+                  <foreground color="-1"/>
+                  <text value="FECHA_CREACION"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </tabbedpane>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="grupoEstadoProductos">
+      <member id="f533a"/>
+      <member id="83499"/>
+      <member id="948b2"/>
+    </group>
+  </buttonGroups>
+</form>

@@ -6,9 +6,9 @@
     <session-factory>
         <property name="connection.url">jdbc:mysql://localhost:3306/practica2_3ud</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <mapping class="practica.Empresa"/>
-        <mapping class="practica.KitEducativo"/>
-        <mapping class="practica.Producto"/>
+        <mapping class="practica.hibernate.Empresa"/>
+        <mapping class="practica.hibernate.KitEducativo"/>
+        <mapping class="practica.hibernate.Producto"/>
         <!-- <property name="connection.username"/> -->
         <!-- <property name="connection.password"/> -->
 

@@ -1,4 +1,4 @@
-package practica;
+package practica.hibernate;
 
 import javax.persistence.*;
 import java.util.List;

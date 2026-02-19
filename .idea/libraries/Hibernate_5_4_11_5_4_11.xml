@@ -20,6 +20,10 @@
       <root url="jar://$PROJECT_DIR$/lib/byte-buddy-1.10.7.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/hibernate-core-5.4.11.Final.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javax.persistence-api-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jgoodies-common-1.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jgoodies-forms-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/LGoodDatePicker-8.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.1.44-bin.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
