@@ -129,5 +129,9 @@ public class Producto {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return idProducto + " - "+ nombre;
+    }
 
 }

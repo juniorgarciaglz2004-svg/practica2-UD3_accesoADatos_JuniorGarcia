@@ -7,11 +7,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import practica.hibernate.Empresa;
 import practica.hibernate.KitEducativo;
+import practica.hibernate.Producto;
 
 
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaDelete;
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Properties;
 
 public class Modelo {
@@ -125,21 +130,13 @@ public class Modelo {
 
     //PARTE PRODUCTO
 
-    public ResultSet obtenerProductos() throws SQLException {
-     String sql =   "SELECT " +
-        "id_producto as id, " +
-               " nombre, " +
-               " descripcion, " +
-               " estado, " +
-               " modelo, " +
-               " marca " +
-        " FROM producto";
-        PreparedStatement sentencia = null;
-        ResultSet resultado = null;
-        sentencia = conexion.prepareStatement(sql);
-        resultado = sentencia.executeQuery();
-        return resultado;
+    public ArrayList<Producto> obtenerProductos() throws SQLException {
 
+        Session sesion = sessionFactory.openSession();
+        Query query = sesion.createQuery("FROM Producto ");
+        ArrayList<Producto> productos = (ArrayList<Producto>)query.getResultList();
+        sesion.close();
+        return productos;
     }
 
 
@@ -173,30 +170,13 @@ public class Modelo {
 
 
 
-    public ResultSet obtenerKitEducativo() throws SQLException {
-        String sql =   "SELECT  " +
-                "k.id_kit," +
-                "k.nombre," +
-                "k.descripcion," +
-                "k.cantidad," +
-                "k.fecha_de_actualizacion," +
-                "k.fecha_de_creacion," +
-                "k.precio," +
-                "k.valoracion, " +
-                "concat(e.id_empresa,'-',e.nombre) as 'empresa' ,  " +
-                "concat(p.id_producto,'-',p.nombre) as 'producto'  " +
-                "FROM kit_educativo k " +
-                "inner join empresa e on e.id_empresa = k.id_empresa " +
-                "inner join producto p on p.id_producto = k.id_producto ";
+    public ArrayList<KitEducativo> obtenerKitEducativo() throws SQLException {
 
-        PreparedStatement sentencia = null;
-        ResultSet resultado = null;
-        sentencia = conexion.prepareStatement(sql);
-        resultado = sentencia.executeQuery();
-        return resultado;
-
-
-
+        Session sesion = sessionFactory.openSession();
+        Query query = sesion.createQuery("FROM KitEducativo ");
+        ArrayList<KitEducativo> kitEducativos = (ArrayList<KitEducativo>)query.getResultList();
+        sesion.close();
+        return kitEducativos;
     }
 
 
@@ -227,20 +207,13 @@ public class Modelo {
 
 
 
-    public ResultSet obtenerEmpresas() throws SQLException {
-        String sql =   "SELECT " +
-                "id_empresa as id, " +
-                " nombre, " +
-                " descripcion, " +
-                " fecha_de_creacion, " +
-                " ubicacion, " +
-                " valoracion " +
-                " FROM empresa";
-        PreparedStatement sentencia = null;
-        ResultSet resultado = null;
-        sentencia = conexion.prepareStatement(sql);
-        resultado = sentencia.executeQuery();
-        return resultado;
+    public ArrayList<Empresa> obtenerEmpresas() throws SQLException {
+
+        Session sesion = sessionFactory.openSession();
+        Query query = sesion.createQuery("FROM Empresa ");
+        ArrayList<Empresa> empresas = (ArrayList<Empresa>)query.getResultList();
+        sesion.close();
+        return empresas;
     }
 
 

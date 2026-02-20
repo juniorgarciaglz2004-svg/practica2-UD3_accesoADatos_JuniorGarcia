@@ -127,6 +127,12 @@ public class Empresa {
         }
 
 
+
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return idEmpresa + " - "+ nombre;
     }
 }

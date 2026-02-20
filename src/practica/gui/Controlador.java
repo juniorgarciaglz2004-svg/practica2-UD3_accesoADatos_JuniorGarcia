@@ -1,6 +1,7 @@
 package practica.gui;
 
 
+import org.dom4j.rule.Mode;
 import practica.hibernate.Empresa;
 import practica.hibernate.EstadoProducto;
 import practica.hibernate.KitEducativo;
@@ -13,6 +14,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 public class Controlador {
@@ -321,13 +324,14 @@ public class Controlador {
 
     void resfrescarProductos() {
         try {
-            vista.tablaProductos.setModel(construirTableModelProductos(modelo.obtenerProductos()));
+            ArrayList<Producto> productos = modelo.obtenerProductos();
+            vista.tablaProductos.setModel(construirTableModelProductos(productos));
             vista.comboBoxProductoKits.removeAllItems();
-            for (int i = 0; i < vista.dtmProductos.getRowCount(); i++) {
-                vista.comboBoxProductoKits.addItem(vista.dtmProductos.getValueAt(i, 0) +
-                        "-" +
-                        vista.dtmProductos.getValueAt(i, 1));
+            for (Producto p : productos) {
+                vista.comboBoxProductoKits.addItem(p);
             }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -364,7 +368,7 @@ public class Controlador {
 
     }
 
-    private DefaultTableModel construirTableModelProductos(ResultSet rs)
+    private DefaultTableModel construirTableModelProductos(ArrayList<Producto> productos)
             throws SQLException {
 
         Vector<String> columnNames = new Vector<>();
@@ -375,7 +379,19 @@ public class Controlador {
         columnNames.add("modelo_Clases");
         columnNames.add("marca");
         Vector<Vector<Object>> data = new Vector<>();
-        setDataVector(rs, columnNames.size(), data);
+
+        for (Producto e : productos){
+            Vector<Object> vector = new Vector<>();
+            vector.add(e.getIdProducto());
+            vector.add(e.getNombre());
+            vector.add(e.getDescripcion());
+            vector.add(e.getEstado());
+            vector.add(e.getModelo());
+            vector.add(e.getMarca());
+
+            data.add(vector);
+        }
+
 
         vista.dtmProductos.setDataVector(data, columnNames);
 
@@ -441,12 +457,12 @@ public class Controlador {
 
     void resfrecarEmpresa() {
         try {
-            vista.tablaEmrpresa.setModel(construirTableModelEmpresa(modelo.obtenerEmpresas()));
+            ArrayList<Empresa> empresas = modelo.obtenerEmpresas();
+            vista.tablaEmrpresa.setModel(construirTableModelEmpresa(empresas));
             vista.comboBoxEmpresaKit.removeAllItems();
-            for (int i = 0; i < vista.dtmEmpresa.getRowCount(); i++) {
-                vista.comboBoxEmpresaKit.addItem(vista.dtmEmpresa.getValueAt(i, 0) +
-                        "-" +
-                        vista.dtmEmpresa.getValueAt(i, 1));
+
+            for (Empresa e : empresas) {
+                vista.comboBoxEmpresaKit.addItem(e);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -476,7 +492,7 @@ public class Controlador {
 
     }
 
-    private DefaultTableModel construirTableModelEmpresa(ResultSet rs) throws SQLException {
+    private DefaultTableModel construirTableModelEmpresa(ArrayList<Empresa> empresas) throws SQLException {
         Vector<String> columnNames = new Vector<>();
         columnNames.add("id");
         columnNames.add("nombre");
@@ -485,7 +501,18 @@ public class Controlador {
         columnNames.add("ubicacion");
         columnNames.add("valoracion");
         Vector<Vector<Object>> data = new Vector<>();
-        setDataVector(rs, columnNames.size(), data);
+
+        for (Empresa e : empresas){
+            Vector<Object> vector = new Vector<>();
+            vector.add(e.getIdEmpresa());
+            vector.add(e.getNombre());
+            vector.add(e.getDescripcion());
+            vector.add(e.getUbicacion());
+            vector.add(e.getValoracion());
+
+            data.add(vector);
+        }
+
 
         vista.dtmEmpresa.setDataVector(data, columnNames);
 
@@ -537,7 +564,7 @@ public class Controlador {
         }
     }
 
-    private DefaultTableModel construirTableModelKits(ResultSet rs) throws SQLException {
+    private DefaultTableModel construirTableModelKits(ArrayList<KitEducativo> kitEducativos) throws SQLException {
         Vector<String> columnNames = new Vector<>();
         columnNames.add("id");
         columnNames.add("nombre");
@@ -551,22 +578,26 @@ public class Controlador {
         columnNames.add("producto");
 
         Vector<Vector<Object>> data = new Vector<>();
-        setDataVector(rs, columnNames.size(), data);
 
+        for (KitEducativo e : kitEducativos){
+            Vector<Object> vector = new Vector<>();
+            vector.add(e.getIdKit());
+            vector.add(e.getNombre());
+            vector.add(e.getDescripcion());
+            vector.add(e.getCantidad());
+            vector.add(e.getFechaDeCreacion());
+            vector.add(e.getFechaDeActualizacion());
+            vector.add(e.getPrecio());
+            vector.add(e.getValoracion());
+            vector.add(e.getIdEmpresa().getNombre());
+            vector.add(e.getIdProducto().getNombre());
+
+            data.add(vector);
+        }
         vista.dtmKits.setDataVector(data, columnNames);
-
-
         return vista.dtmKits;
     }
 
-    private void setDataVector(ResultSet rs, int columnCount, Vector<Vector<Object>> data) throws SQLException {
-        while (rs.next()) {
-            Vector<Object> vector = new Vector<>();
-            for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
-                vector.add(rs.getObject(columnIndex));
-            }
-            data.add(vector);
-        }
-    }
+
 
 }
