@@ -14,7 +14,7 @@ public class KitEducativo {
     private int cantidad;
     private Date fechaDeCreacion;
     private Date fechaDeActualizacion;
-    private BigDecimal precio;
+    private float precio;
     private int valoracion;
     private Empresa idEmpresa;
     private Producto idProducto;
@@ -81,11 +81,11 @@ public class KitEducativo {
 
     @Basic
     @Column(name = "precio", nullable = false, precision = 2)
-    public BigDecimal getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 

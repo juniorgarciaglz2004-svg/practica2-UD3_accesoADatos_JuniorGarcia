@@ -2,6 +2,12 @@ package practica.gui;
 
 
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import practica.hibernate.KitEducativo;
 import practica.modelo_Clases.Empresa;
 import practica.modelo_Clases.Kit_Educativo;
 import practica.modelo_Clases.Producto;
@@ -17,6 +23,8 @@ public class Modelo {
     private String db;
     private Connection conexion;
     public String deletePass;
+    SessionFactory sessionFactory;
+
     public Modelo() {
         getPropValues();
     }
@@ -71,6 +79,25 @@ public class Modelo {
                 e.printStackTrace();
             }
         }
+
+        Configuration configuracion = new Configuration();
+        //Cargo el fichero Hibernate.cfg.xml
+        configuracion.configure("hibernate.cfg.xml");
+
+        //Indico la clase mapeada con anotaciones
+        configuracion.addAnnotatedClass(practica.hibernate.Empresa.class);
+        configuracion.addAnnotatedClass(KitEducativo.class);
+        configuracion.addAnnotatedClass(practica.hibernate.Producto.class);
+
+
+        //Creamos un objeto ServiceRegistry a partir de los parámetros de configuración
+        //Esta clase se usa para gestionar y proveer de acceso a servicios
+        StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(
+                configuracion.getProperties()).build();
+
+        //finalmente creamos un objeto sessionfactory a partir de la configuracion y del registro de servicios
+        sessionFactory = configuracion.buildSessionFactory(ssr);
+
     }
 
     private String leerFichero() throws IOException {
@@ -92,6 +119,10 @@ public class Modelo {
         } catch (SQLException sqle) {
             sqle.printStackTrace();
         }
+
+        if(sessionFactory != null && sessionFactory.isOpen())
+            sessionFactory.close();
+
     }
 
     //PARTE PRODUCTO
@@ -115,27 +146,15 @@ public class Modelo {
 
 
     public void adicionarProducto(Producto p) throws SQLException {
-    String sql = "INSERT INTO producto" +
-            "(" +
-            "nombre," +
-            "descripcion," +
-            "estado," +
-            "modelo," +
-            "marca)" +
-            "VALUES" +
-            "(" +
-            "?," +
-            "?," +
-            "?," +
-            "?," +
-            "?)";
-    PreparedStatement statement = conexion.prepareStatement(sql);
-    statement.setString(1,p.getNombre());
-    statement.setString(2,p.getDescripcion());
-    statement.setString(3,p.getEstado().name());
-    statement.setString(4,p.getModelo());
-    statement.setString(5,p.getMarca());
-    statement.executeUpdate();
+
+        practica.hibernate.Producto producto = new practica.hibernate.Producto ();
+        producto.setNombre(p.getNombre());
+        producto.setDescripcion(p.getDescripcion());
+        producto.setEstado(p.getEstado().name());
+        producto.setModelo(p.getModelo());
+        producto.setMarca(p.getMarca());
+        insertar(producto);
+
     }
 
     public void actualizarProducto(Producto p) throws SQLException {
@@ -181,40 +200,20 @@ public class Modelo {
 
     //PARTE KIT EDUCATIVO
 
-    public void adicionarKitEducativo(Kit_Educativo k) throws SQLException {
-        String sql = "INSERT INTO kit_educativo" +
-                "(" +
-                "nombre," +
-                "descripcion," +
-                "cantidad," +
-                "fecha_de_creacion," +
-                "fecha_de_actualizacion," +
-                "precio," +
-                "valoracion," +
-                "id_producto," +
-                "id_empresa)" +
-                "VALUES" +
-                "(" +
-                "?," +
-                "?," +
-                "?," +
-                "?," +
-                "?," +
-                "?," +
-                "?," +
-                "?," +
-                "?)";
-        PreparedStatement statement = conexion.prepareStatement(sql);
-        statement.setString(1,k.getNombre());
-        statement.setString(2,k.getDescripcion());
-        statement.setInt(3,k.getCantidad());
-        statement.setDate(4,Date.valueOf(k.getFechaCreacion()));
-        statement.setDate(5,Date.valueOf(k.getFechaActualizacion()));
-        statement.setFloat(6,k.getPrecio());
-        statement.setInt(7,k.getValoracion());
-        statement.setInt(8,k.getProductoKit());
-        statement.setInt(9,k.getEmpresasKit());
-        statement.executeUpdate();
+    public void adicionarKitEducativo(Kit_Educativo k , practica.hibernate.Empresa e , practica.hibernate.Producto p) throws SQLException {
+
+
+        practica.hibernate.KitEducativo kitEducativo = new practica.hibernate.KitEducativo ();
+        kitEducativo.setNombre(k.getNombre());
+        kitEducativo.setDescripcion(k.getDescripcion());
+        kitEducativo.setCantidad(k.getCantidad());
+        kitEducativo.setFechaDeCreacion(Date.valueOf(k.getFechaCreacion()));
+        kitEducativo.setFechaDeActualizacion(Date.valueOf(k.getFechaActualizacion()));
+        kitEducativo.setPrecio(k.getPrecio());
+        kitEducativo.setValoracion(k.getValoracion());
+        kitEducativo.setIdProducto(p);
+        kitEducativo.setIdEmpresa(e);;
+        insertar(kitEducativo);
 
 
     }
@@ -298,27 +297,14 @@ public class Modelo {
 
 
     public void adicionarEmpresas(Empresa em) throws SQLException {
-        String sql = "INSERT INTO empresa" +
-                "(" +
-                " nombre, " +
-                " descripcion, " +
-                " fecha_de_creacion, " +
-                " ubicacion, " +
-                " valoracion) " +
-                "VALUES" +
-                "(" +
-                "?," +
-                "?," +
-                "?," +
-                "?," +
-                "?)";
-        PreparedStatement statement = conexion.prepareStatement(sql);
-        statement.setString(1,em.getNombre());
-        statement.setString(2,em.getDescripcion());
-        statement.setDate(3,Date.valueOf(em.getFechaCreacion()));
-        statement.setString(4,em.getUbicacion());
-        statement.setInt(5,em.getValoracion());
-        statement.executeUpdate();
+
+        practica.hibernate.Empresa empresa = new practica.hibernate.Empresa ();
+        empresa.setNombre(em.getNombre());
+        empresa.setDescripcion(em.getDescripcion());
+        empresa.setFechaDeCreacion(Date.valueOf(em.getFechaCreacion()));
+        empresa.setUbicacion(em.getUbicacion());
+        empresa.setValoracion(em.getValoracion());
+        insertar(empresa);
 
     }
 
@@ -376,6 +362,42 @@ public class Modelo {
                     sqle.printStackTrace();
                 }
         }
+    }
+
+
+    void insertar(Object o) {
+        //Obtengo una session a partir de la factoria de sesiones
+        Session sesion = sessionFactory.openSession();
+
+        sesion.beginTransaction();
+        sesion.save(o);
+        sesion.getTransaction().commit();
+
+        sesion.close();
+    }
+
+    /***
+     * Modificar un objeto de la BBDD
+     * @param o objeto a modificar en la BBDD
+     */
+    void modificar(Object o) {
+        Session sesion = sessionFactory.openSession();
+        sesion.beginTransaction();
+        sesion.saveOrUpdate(o);
+        sesion.getTransaction().commit();
+        sesion.close();
+    }
+
+    /***
+     * Eliminar un objeto de la BBDD
+     * @param o objeto a eliminar en la BBDD
+     */
+    void eliminar(Object o) {
+        Session sesion = sessionFactory.openSession();
+        sesion.beginTransaction();
+        sesion.delete(o);
+        sesion.getTransaction().commit();
+        sesion.close();
     }
 
 }

@@ -90,6 +90,7 @@ public class Producto {
         this.kitEducativos = kitEducativos;
     }
     @Id
+    @Column(name = "id_producto")
     public int getIdProducto() {
         return idProducto;
     }

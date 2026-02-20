@@ -96,6 +96,7 @@ public class Empresa {
         this.idEmpresa = idEmpresa;
     }
     @Id
+    @Column(name = "id_empresa")
     public int getIdEmpresa() {
         return idEmpresa;
     }

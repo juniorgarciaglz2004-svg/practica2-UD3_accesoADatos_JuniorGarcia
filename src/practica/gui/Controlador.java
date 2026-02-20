@@ -555,7 +555,9 @@ public class Controlador {
 
         if (p.valido()) {
             try {
-                modelo.adicionarKitEducativo(p);
+                modelo.adicionarKitEducativo(p,
+                        (practica.hibernate.Empresa)vista.comboBoxEmpresaKit.getSelectedItem(),
+                        (practica.hibernate.Producto)vista.comboBoxProductoKits.getSelectedItem());
             } catch (SQLException e) {
                 e.printStackTrace();
             }
