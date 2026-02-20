@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Producto {
     private String nombre;
     private String descripcion;
-    private String estado;
+    private EstadoProducto estado;
     private String modelo;
     private String marca;
     private int idProducto;
@@ -36,11 +36,12 @@ public class Producto {
 
     @Basic
     @Column(name = "estado", nullable = false, length = 50)
-    public String getEstado() {
+    @Enumerated(EnumType.STRING)
+    public EstadoProducto getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoProducto estado) {
         this.estado = estado;
     }
 
@@ -98,4 +99,35 @@ public class Producto {
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
+
+    public boolean valido () {
+
+        if (nombre.trim().length()==0)
+        {
+            return false;
+        }
+        if (descripcion.trim().length()==0)
+        {
+            return false;
+        }
+
+        if (modelo.trim().length()==0)
+        {
+            return false;
+        }
+
+        if (marca.trim().length()==0)
+        {
+            return false;
+        }
+        if (estado==null)
+        {
+            return false;
+        }
+
+
+        return true;
+    }
+
+
 }

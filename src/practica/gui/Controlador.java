@@ -1,10 +1,10 @@
 package practica.gui;
 
 
-import practica.modelo_Clases.Empresa;
-import practica.modelo_Clases.EstadoProducto;
-import practica.modelo_Clases.Kit_Educativo;
-import practica.modelo_Clases.Producto;
+import practica.hibernate.Empresa;
+import practica.hibernate.EstadoProducto;
+import practica.hibernate.KitEducativo;
+import practica.hibernate.Producto;
 import practica.util.Util;
 
 import javax.swing.*;
@@ -75,33 +75,29 @@ public class Controlador {
             return;
         }
 
-        Kit_Educativo p = new Kit_Educativo();
-        p.setId((Integer) vista.tablaKits.getValueAt(vista.tablaKits.getSelectedRow(), 0));
+        KitEducativo p = new KitEducativo();
+        p.setIdKit((Integer) vista.tablaKits.getValueAt(vista.tablaKits.getSelectedRow(), 0));
         p.setNombre(vista.nombreKit.getText());
         p.setDescripcion(vista.descripcionKit.getText());
         if (vista.cantidadKit.getText().trim().length() > 0) {
             p.setCantidad(Integer.parseInt(vista.cantidadKit.getText()));
         }
-        p.setFechaCreacion(vista.fecha_CreacionKits.getDate());
-        p.setFechaActualizacion(vista.fecha_ActualizacionKits.getDate());
+        p.setFechaDeCreacion(Date.valueOf(vista.fecha_CreacionKits.getDate()));
+        p.setFechaDeActualizacion(Date.valueOf(vista.fecha_ActualizacionKits.getDate()));
         p.setValoracion(vista.valoracionSliderKit.getValue());
         if (vista.precioKit.getText().trim().length() > 0) {
             p.setPrecio(Float.parseFloat(vista.precioKit.getText()));
         }
 
         if (vista.comboBoxEmpresaKit.getSelectedIndex() >= 0) {
-            p.setEmpresasKit(Integer.parseInt(String.valueOf(vista.comboBoxEmpresaKit.getSelectedItem()).split("-")[0]));
+            p.setIdEmpresa((Empresa) vista.comboBoxEmpresaKit.getSelectedItem());
         }
         if (vista.comboBoxProductoKits.getSelectedIndex() >= 0) {
-            p.setProductoKit(Integer.parseInt(String.valueOf(vista.comboBoxProductoKits.getSelectedItem()).split("-")[0]));
+            p.setIdProducto((Producto) vista.comboBoxProductoKits.getSelectedItem());
         }
 
         if (p.valido()) {
-            try {
-                modelo.actualizarKitEducativo(p);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            modelo.modificar(p);
             resfrecarKits();
             borrarCamposKits();
 
@@ -235,7 +231,7 @@ public class Controlador {
         }
 
         Producto p = new Producto();
-        p.setId((Integer) vista.tablaProductos.getValueAt(vista.tablaProductos.getSelectedRow(), 0));
+        p.setIdProducto((Integer) vista.tablaProductos.getValueAt(vista.tablaProductos.getSelectedRow(), 0));
         p.setNombre(vista.nombreProducto.getText());
         p.setDescripcion(vista.descripcionProducto.getText());
         p.setMarca(vista.marcaProducto.getText());
@@ -251,11 +247,7 @@ public class Controlador {
         }
 
         if (p.valido()) {
-            try {
-                modelo.actualizarProducto(p);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            modelo.modificar(p);
             resfrescarProductos();
             vista.nombreProducto.setText("");
             vista.descripcionProducto.setText("");
@@ -359,11 +351,7 @@ public class Controlador {
         }
 
         if (p.valido()) {
-            try {
-                modelo.adicionarProducto(p);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            modelo.insertar(p);
             resfrescarProductos();
             vista.nombreProducto.setText("");
             vista.descripcionProducto.setText("");
@@ -432,20 +420,16 @@ public class Controlador {
         }
 
         Empresa p = new Empresa();
-        p.setId((Integer) vista.tablaEmrpresa.getValueAt(vista.tablaEmrpresa.getSelectedRow(), 0));
+        p.setIdEmpresa((Integer) vista.tablaEmrpresa.getValueAt(vista.tablaEmrpresa.getSelectedRow(), 0));
         p.setNombre(vista.nombreEmpresa.getText());
         p.setDescripcion(vista.descripcionEmpresa.getText());
-        p.setFechaCreacion(vista.fecha_creacion_Empresa.getDate());
+        p.setFechaDeCreacion(Date.valueOf(vista.fecha_creacion_Empresa.getDate()));
         p.setUbicacion(vista.ubicacionEmpresa.getText());
         p.setValoracion(vista.valoracionSliderEmpresa.getValue());
 
 
         if (p.valido()) {
-            try {
-                modelo.actualizarEmpresa(p);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            modelo.modificar(p);
             resfrecarEmpresa();
             borrarCamposEmpresa();
 
@@ -475,17 +459,14 @@ public class Controlador {
         Empresa p = new Empresa();
         p.setNombre(vista.nombreEmpresa.getText());
         p.setDescripcion(vista.descripcionEmpresa.getText());
-        p.setFechaCreacion(vista.fecha_creacion_Empresa.getDate());
+        p.setFechaDeCreacion(Date.valueOf(vista.fecha_creacion_Empresa.getDate()));
+
         p.setUbicacion(vista.ubicacionEmpresa.getText());
         p.setValoracion(vista.valoracionSliderEmpresa.getValue());
 
 
         if (p.valido()) {
-            try {
-                modelo.adicionarEmpresas(p);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            modelo.insertar(p);
             resfrecarEmpresa();
             borrarCamposEmpresa();
         } else {
@@ -523,14 +504,15 @@ public class Controlador {
     }
 
     private void adicionarKits() {
-        Kit_Educativo p = new Kit_Educativo();
+        KitEducativo p = new KitEducativo();
         p.setNombre(vista.nombreKit.getText());
         p.setDescripcion(vista.descripcionKit.getText());
         if (vista.cantidadKit.getText().trim().length() > 0) {
             p.setCantidad(Integer.parseInt(vista.cantidadKit.getText()));
         }
-        p.setFechaCreacion(vista.fecha_CreacionKits.getDate());
-        p.setFechaActualizacion(vista.fecha_ActualizacionKits.getDate());
+        p.setFechaDeCreacion(Date.valueOf(vista.fecha_CreacionKits.getDate()));
+        p.setFechaDeActualizacion(Date.valueOf(vista.fecha_ActualizacionKits.getDate()));
+
         p.setValoracion(vista.valoracionSliderKit.getValue());
         if (vista.precioKit.getText().trim().length() > 0) {
             p.setPrecio(Float.parseFloat(vista.precioKit.getText()));
@@ -538,29 +520,16 @@ public class Controlador {
 
 
         if (vista.comboBoxEmpresaKit.getSelectedIndex() >= 0) {
-            Object seleccionado = vista.comboBoxEmpresaKit.getSelectedItem();
-            String s = String.valueOf(seleccionado);//id-desc
-            String[] partes = s.split("-"); //[id,desc]
-            String id = partes[0];
-            p.setEmpresasKit(Integer.parseInt(id));
+            p.setIdEmpresa((Empresa) vista.comboBoxEmpresaKit.getSelectedItem());
         }
         if (vista.comboBoxProductoKits.getSelectedIndex() >= 0) {
-            Object seleccionado = vista.comboBoxProductoKits.getSelectedItem();
-            String s = String.valueOf(seleccionado);//id-desc
-            String[] partes = s.split("-"); //[id,desc]
-            String id = partes[0];
-            p.setProductoKit(Integer.parseInt(id));
+            p.setIdProducto((Producto) vista.comboBoxProductoKits.getSelectedItem());
         }
 
 
         if (p.valido()) {
-            try {
-                modelo.adicionarKitEducativo(p,
-                        (practica.hibernate.Empresa)vista.comboBoxEmpresaKit.getSelectedItem(),
-                        (practica.hibernate.Producto)vista.comboBoxProductoKits.getSelectedItem());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+                modelo.insertar(p);
             resfrecarKits();
             borrarCamposKits();
         } else {

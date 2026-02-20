@@ -8,9 +8,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import practica.hibernate.KitEducativo;
-import practica.modelo_Clases.Empresa;
-import practica.modelo_Clases.Kit_Educativo;
-import practica.modelo_Clases.Producto;
+
 
 import java.io.*;
 import java.sql.*;
@@ -145,36 +143,9 @@ public class Modelo {
     }
 
 
-    public void adicionarProducto(Producto p) throws SQLException {
 
-        practica.hibernate.Producto producto = new practica.hibernate.Producto ();
-        producto.setNombre(p.getNombre());
-        producto.setDescripcion(p.getDescripcion());
-        producto.setEstado(p.getEstado().name());
-        producto.setModelo(p.getModelo());
-        producto.setMarca(p.getMarca());
-        insertar(producto);
 
-    }
 
-    public void actualizarProducto(Producto p) throws SQLException {
-        String sql = "update producto set " +
-                "nombre = ?," +
-                "descripcion = ?," +
-                "estado = ?," +
-                "modelo = ?," +
-                "marca = ?" +
-                "WHERE id_producto = ?";
-
-        PreparedStatement statement = conexion.prepareStatement(sql);
-        statement.setString(1,p.getNombre());
-        statement.setString(2,p.getDescripcion());
-        statement.setString(3,p.getEstado().name());
-        statement.setString(4,p.getModelo());
-        statement.setString(5,p.getMarca());
-        statement.setInt(6,p.getId());
-        statement.executeUpdate();
-    }
 
 
     void eliminarProducto(int id) {
@@ -200,23 +171,7 @@ public class Modelo {
 
     //PARTE KIT EDUCATIVO
 
-    public void adicionarKitEducativo(Kit_Educativo k , practica.hibernate.Empresa e , practica.hibernate.Producto p) throws SQLException {
 
-
-        practica.hibernate.KitEducativo kitEducativo = new practica.hibernate.KitEducativo ();
-        kitEducativo.setNombre(k.getNombre());
-        kitEducativo.setDescripcion(k.getDescripcion());
-        kitEducativo.setCantidad(k.getCantidad());
-        kitEducativo.setFechaDeCreacion(Date.valueOf(k.getFechaCreacion()));
-        kitEducativo.setFechaDeActualizacion(Date.valueOf(k.getFechaActualizacion()));
-        kitEducativo.setPrecio(k.getPrecio());
-        kitEducativo.setValoracion(k.getValoracion());
-        kitEducativo.setIdProducto(p);
-        kitEducativo.setIdEmpresa(e);;
-        insertar(kitEducativo);
-
-
-    }
 
     public ResultSet obtenerKitEducativo() throws SQLException {
         String sql =   "SELECT  " +
@@ -244,32 +199,7 @@ public class Modelo {
 
     }
 
-    public void actualizarKitEducativo(Kit_Educativo k) throws SQLException {
-        String sql = "update kit_educativo set " +
-                "nombre = ?, " +
-                "descripcion = ?, " +
-                "cantidad = ?, " +
-                "fecha_de_creacion = ?, " +
-                "fecha_de_actualizacion = ?, " +
-                "precio = ?, " +
-                "valoracion = ?, " +
-                "id_producto = ?, " +
-                "id_empresa = ? " +
-                "WHERE id_kit = ?";
 
-        PreparedStatement statement = conexion.prepareStatement(sql);
-        statement.setString(1,k.getNombre());
-        statement.setString(2,k.getDescripcion());
-        statement.setInt(3,k.getCantidad());
-        statement.setDate(4,Date.valueOf(k.getFechaCreacion()));
-        statement.setDate(5,Date.valueOf(k.getFechaActualizacion()));
-        statement.setFloat(6,k.getPrecio());
-        statement.setInt(7,k.getValoracion());
-        statement.setInt(8,k.getProductoKit());
-        statement.setInt(9,k.getEmpresasKit());
-        statement.setInt(10,k.getId());
-        statement.executeUpdate();
-    }
 
     void eliminarKit(int id) {
         String sentenciaSql = "DELETE FROM kit_educativo WHERE id_kit = ?";
@@ -296,17 +226,6 @@ public class Modelo {
 
 
 
-    public void adicionarEmpresas(Empresa em) throws SQLException {
-
-        practica.hibernate.Empresa empresa = new practica.hibernate.Empresa ();
-        empresa.setNombre(em.getNombre());
-        empresa.setDescripcion(em.getDescripcion());
-        empresa.setFechaDeCreacion(Date.valueOf(em.getFechaCreacion()));
-        empresa.setUbicacion(em.getUbicacion());
-        empresa.setValoracion(em.getValoracion());
-        insertar(empresa);
-
-    }
 
     public ResultSet obtenerEmpresas() throws SQLException {
         String sql =   "SELECT " +
@@ -325,24 +244,6 @@ public class Modelo {
     }
 
 
-    public void actualizarEmpresa(Empresa em) throws SQLException {
-        String sql = "update empresa set " +
-                "nombre = ?," +
-                "descripcion = ?," +
-                "fecha_de_creacion = ?," +
-                "ubicacion = ?," +
-                "valoracion = ? " +
-                "WHERE id_empresa = ?";
-
-        PreparedStatement statement = conexion.prepareStatement(sql);
-        statement.setString(1,em.getNombre());
-        statement.setString(2,em.getDescripcion());
-        statement.setDate(3,Date.valueOf(em.getFechaCreacion()));
-        statement.setString(4,em.getUbicacion());
-        statement.setInt(5,em.getValoracion());
-        statement.setInt(6,em.getId());
-        statement.executeUpdate();
-    }
 
     void eliminarEmpresa(int id) {
         String sentenciaSql = "DELETE FROM empresa WHERE id_empresa = ?";

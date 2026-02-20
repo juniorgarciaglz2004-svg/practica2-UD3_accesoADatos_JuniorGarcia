@@ -1,4 +1,4 @@
-package practica.modelo_Clases;
+package practica.hibernate;
 
 public enum EstadoProducto {
     USADO,

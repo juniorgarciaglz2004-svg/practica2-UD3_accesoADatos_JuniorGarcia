@@ -100,4 +100,33 @@ public class Empresa {
     public int getIdEmpresa() {
         return idEmpresa;
     }
+
+    public boolean valido () {
+
+        if (nombre.trim().length()==0)
+        {
+            return false;
+        }
+        if (descripcion.trim().length()==0)
+        {
+            return false;
+        }
+
+        if (fechaDeCreacion==null)
+        {
+            return false;
+        }
+
+        if (ubicacion.trim().length()==0)
+        {
+            return false;
+        }
+        if (valoracion<0)
+        {
+            return false;
+        }
+
+
+        return true;
+    }
 }

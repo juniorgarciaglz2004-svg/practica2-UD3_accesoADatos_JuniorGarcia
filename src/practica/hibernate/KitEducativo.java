@@ -138,4 +138,46 @@ public class KitEducativo {
     public void setIdProducto(Producto idProducto) {
         this.idProducto = idProducto;
     }
+
+    public boolean valido () {
+
+        if (nombre.trim().length() == 0) {
+            return false;
+        }
+        if (descripcion.trim().length() == 0) {
+            return false;
+        }
+
+        if (cantidad < 0
+        ) {
+            return false;
+        }
+
+
+        if (fechaDeCreacion == null) {
+            return false;
+        }
+        if (fechaDeActualizacion == null) {
+            return false;
+        }
+
+        if (precio < 0) {
+            return false;
+        }
+        if (valoracion < 0) {
+            return false;
+        }
+
+        if (idEmpresa  == null) {
+            return false;
+        }
+
+        if (idProducto  == null) {
+            return false;
+        }
+        return true;
+
+    }
+
+
 }
