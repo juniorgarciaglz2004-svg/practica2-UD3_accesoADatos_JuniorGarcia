@@ -82,7 +82,7 @@ public class Producto {
         return Objects.hash(nombre, descripcion, estado, modelo, marca);
     }
 
-    @OneToMany(mappedBy = "idProducto")
+    @OneToMany(mappedBy = "producto")
     public List<KitEducativo> getKitEducativos() {
         return kitEducativos;
     }

@@ -1,7 +1,6 @@
 package practica.hibernate;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.Objects;
 
@@ -16,8 +15,8 @@ public class KitEducativo {
     private Date fechaDeActualizacion;
     private float precio;
     private int valoracion;
-    private Empresa idEmpresa;
-    private Producto idProducto;
+    private Empresa empresa;
+    private Producto producto;
 
     @Id
     @Column(name = "id_kit", nullable = false)
@@ -119,24 +118,24 @@ public class KitEducativo {
         return Objects.hash(idKit, nombre, descripcion, cantidad, fechaDeCreacion, fechaDeActualizacion, precio, valoracion);
     }
 
-    @ManyToOne // <--- Cambiado de OneToOne a ManyToOne
+    @ManyToOne
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", nullable = false)
-    public Empresa getIdEmpresa() {
-        return idEmpresa;
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setIdEmpresa(Empresa idEmpresa) {
-        this.idEmpresa = idEmpresa;
+    public void setEmpresa(Empresa idEmpresa) {
+        this.empresa = idEmpresa;
     }
 
-    @ManyToOne // <--- Cambiado de OneToOne a ManyToOne
+    @ManyToOne
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto", nullable = false)
-    public Producto getIdProducto() {
-        return idProducto;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(Producto idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(Producto idProducto) {
+        this.producto = idProducto;
     }
 
     public boolean valido () {
@@ -168,11 +167,11 @@ public class KitEducativo {
             return false;
         }
 
-        if (idEmpresa  == null) {
+        if (empresa == null) {
             return false;
         }
 
-        if (idProducto  == null) {
+        if (producto == null) {
             return false;
         }
         return true;

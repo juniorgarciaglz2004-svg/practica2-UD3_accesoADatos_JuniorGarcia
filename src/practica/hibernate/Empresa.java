@@ -83,7 +83,7 @@ public class Empresa {
     }
 
     //
-    @OneToMany(mappedBy = "idEmpresa")
+    @OneToMany(mappedBy = "empresa")
     public List<KitEducativo> getKitEducativos() {
         return kitEducativos;
     }
