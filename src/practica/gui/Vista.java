@@ -3,7 +3,6 @@ package practica.gui;
 import com.github.lgooddatepicker.components.DatePicker;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class Vista extends JFrame{
@@ -34,19 +33,20 @@ public class Vista extends JFrame{
      JCheckBox productosEstadoNuevos;
      JSlider valoracionSliderEmpresa;
      JCheckBox productosEstadoReacondicionados;
-     JTable tablaProductos;
-     JTable tablaKits;
-     JTable tablaEmrpresa;
+
      JTextField modeloProducto;
      JTextField marcaProducto;
      JSlider valoracionSliderKit;
      JTextField precioKit;
      JTextField ubicacionEmpresa;
+     JList listaEmpresa;
+     JList listaProducto;
+     JList listaKits;
 
 
-    DefaultTableModel dtmProductos;
-    DefaultTableModel dtmKits;
-    DefaultTableModel dtmEmpresa;
+    DefaultListModel dtmProductos;
+    DefaultListModel dtmKits;
+    DefaultListModel dtmEmpresa;
 
     public JButton btnValidate;
     public JDialog dialogoDeEliminacion;
@@ -88,13 +88,13 @@ public class Vista extends JFrame{
 
     private void setTableModels() {
 
-        this.dtmProductos=new DefaultTableModel();
-        this.tablaProductos.setModel(dtmProductos);
+        this.dtmProductos=new DefaultListModel();
+        this.listaProducto.setModel(dtmProductos);
 
-        this.dtmKits=new DefaultTableModel();
-        this.tablaKits.setModel(dtmKits);
+        this.dtmKits=new DefaultListModel();
+        this.listaKits.setModel(dtmKits);
 
-        this.dtmEmpresa=new DefaultTableModel();
-        this.tablaEmrpresa.setModel(dtmEmpresa);
+        this.dtmEmpresa=new DefaultListModel();
+        this.listaEmpresa.setModel(dtmEmpresa);
     }
 }

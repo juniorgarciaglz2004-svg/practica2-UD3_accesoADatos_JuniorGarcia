@@ -179,5 +179,10 @@ public class KitEducativo {
 
     }
 
-
+    @Override
+    public String toString() {
+        return idKit +
+                "-" + nombre +
+                "-" + descripcion;
+    }
 }

@@ -130,7 +130,7 @@ public class Modelo {
 
     //PARTE PRODUCTO
 
-    public ArrayList<Producto> obtenerProductos() throws SQLException {
+    public ArrayList<Producto> obtenerProductos(){
 
         Session sesion = sessionFactory.openSession();
         Query query = sesion.createQuery("FROM Producto ");
@@ -144,33 +144,11 @@ public class Modelo {
 
 
 
-
-    void eliminarProducto(int id) {
-        String sentenciaSql = "DELETE FROM producto WHERE id_producto = ?";
-        PreparedStatement sentencia = null;
-
-        try {
-            sentencia = conexion.prepareStatement(sentenciaSql);
-            sentencia.setInt(1, id);
-            sentencia.executeUpdate();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            if (sentencia != null)
-                try {
-                    sentencia.close();
-                } catch (SQLException sqle) {
-                    sqle.printStackTrace();
-                }
-        }
-    }
-
-
     //PARTE KIT EDUCATIVO
 
 
 
-    public ArrayList<KitEducativo> obtenerKitEducativo() throws SQLException {
+    public ArrayList<KitEducativo> obtenerKitEducativo()  {
 
         Session sesion = sessionFactory.openSession();
         Query query = sesion.createQuery("FROM KitEducativo ");
@@ -181,33 +159,13 @@ public class Modelo {
 
 
 
-    void eliminarKit(int id) {
-        String sentenciaSql = "DELETE FROM kit_educativo WHERE id_kit = ?";
-        PreparedStatement sentencia = null;
-
-        try {
-            sentencia = conexion.prepareStatement(sentenciaSql);
-            sentencia.setInt(1, id);
-            sentencia.executeUpdate();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            if (sentencia != null)
-                try {
-                    sentencia.close();
-                } catch (SQLException sqle) {
-                    sqle.printStackTrace();
-                }
-        }
-    }
-
 
     //PARTE EMPRESA
 
 
 
 
-    public ArrayList<Empresa> obtenerEmpresas() throws SQLException {
+    public ArrayList<Empresa> obtenerEmpresas() {
 
         Session sesion = sessionFactory.openSession();
         Query query = sesion.createQuery("FROM Empresa ");
@@ -216,27 +174,6 @@ public class Modelo {
         return empresas;
     }
 
-
-
-    void eliminarEmpresa(int id) {
-        String sentenciaSql = "DELETE FROM empresa WHERE id_empresa = ?";
-        PreparedStatement sentencia = null;
-
-        try {
-            sentencia = conexion.prepareStatement(sentenciaSql);
-            sentencia.setInt(1, id);
-            sentencia.executeUpdate();
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        } finally {
-            if (sentencia != null)
-                try {
-                    sentencia.close();
-                } catch (SQLException sqle) {
-                    sqle.printStackTrace();
-                }
-        }
-    }
 
 
     void insertar(Object o) {
