@@ -44,6 +44,10 @@ public class Vista extends JFrame{
      JList listaKits;
 
 
+    JMenuItem conexionItem;
+    JMenuItem desconectar;
+    JMenuItem salirItem;
+
     DefaultListModel dtmProductos;
     DefaultListModel dtmKits;
     DefaultListModel dtmEmpresa;
@@ -52,9 +56,13 @@ public class Vista extends JFrame{
     public JDialog dialogoDeEliminacion;
     public JPasswordField contrasenaDeEliminacion;
 
+
+
+
     public Vista() {
         super("TIENDA DE ROBOTICA Y KITS EDUCATIVOS PARA NIÑOS");
         initFrame();
+
     }
 
     public void initFrame() {
@@ -64,6 +72,8 @@ public class Vista extends JFrame{
         this.setSize(new Dimension(this.getWidth()+100,this.getHeight()));
         this.setVisible(true);
         this.setLocationRelativeTo(null);
+
+        crearMenu();
         setTableModels();
         crearDialogoSeguridad();
 
@@ -85,6 +95,29 @@ public class Vista extends JFrame{
 
     }
 
+    private void crearMenu() {
+        JMenuBar barra = new JMenuBar();
+        JMenu menu = new JMenu("Archivo");
+
+        conexionItem = new JMenuItem("Conectar");
+        conexionItem.setActionCommand("Conectar");
+
+
+
+        desconectar = new JMenuItem("Desconectar");
+        desconectar.setActionCommand("Desconectar");
+
+        salirItem = new JMenuItem("Salir");
+        salirItem.setActionCommand("Salir");
+
+
+        menu.add(conexionItem);
+        menu.add(desconectar);
+        menu.add(salirItem);
+        barra.add(menu);
+        this.setJMenuBar(barra);
+    }
+
 
     private void setTableModels() {
 
@@ -97,4 +130,7 @@ public class Vista extends JFrame{
         this.dtmEmpresa=new DefaultListModel();
         this.listaEmpresa.setModel(dtmEmpresa);
     }
+
+
+
 }

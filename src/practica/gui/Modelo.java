@@ -1,7 +1,6 @@
 package practica.gui;
 
 
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -11,11 +10,8 @@ import practica.hibernate.Empresa;
 import practica.hibernate.KitEducativo;
 import practica.hibernate.Producto;
 
-
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaDelete;
 import java.io.*;
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -24,7 +20,6 @@ public class Modelo {
     private String user;
     private String password;
     private String db;
-    private Connection conexion;
     public String deletePass;
     SessionFactory sessionFactory;
 
@@ -59,29 +54,6 @@ public class Modelo {
 
     void conectar() {
 
-        try {
-            conexion = DriverManager.getConnection(
-                    "jdbc:mysql://"+ip+":3306/"+db,user, password);
-        } catch (SQLException sqle) {
-            try {
-                conexion = DriverManager.getConnection(
-                        "jdbc:mysql://"+ip+":3306/",user, password);
-
-                PreparedStatement statement = null;
-
-                String code = leerFichero();
-                String[] query = code.split("__");
-                for (String aQuery : query) {
-                    statement = conexion.prepareStatement(aQuery);
-                    statement.executeUpdate();
-                }
-                assert statement != null;
-                statement.close();
-
-            } catch (SQLException | IOException e) {
-                e.printStackTrace();
-            }
-        }
 
         Configuration configuracion = new Configuration();
         //Cargo el fichero Hibernate.cfg.xml
@@ -116,12 +88,6 @@ public class Modelo {
     }
 
     void desconectar() {
-        try {
-            conexion.close();
-            conexion = null;
-        } catch (SQLException sqle) {
-            sqle.printStackTrace();
-        }
 
         if(sessionFactory != null && sessionFactory.isOpen())
             sessionFactory.close();

@@ -16,17 +16,46 @@ public class Controlador {
     private boolean refrescar;
     private Modelo modelo;
     private Vista vista;
+    private boolean conectado;
 
 
     public Controlador(Modelo modelo, Vista vista) {
         this.modelo = modelo;
         this.vista = vista;
-        modelo.conectar();
+        this.conectado = false;
         adicionarActionListenersProductos();
         adicionarActionListenersEmpresas();
         adicionarActionListenersKit();
+        adicionarListenersMenu();
 
-        refrescarTodo();
+    }
+
+    private void adicionarListenersMenu(){
+
+
+        vista.desconectar.addActionListener(e->{
+            if (!conectado) {
+                JOptionPane.showMessageDialog(null, "No has conectado con la BBDD",
+                        "Error de conexión", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            vista.desconectar.setEnabled(false);
+            vista.conexionItem.setEnabled(true);
+            modelo.desconectar();
+            JOptionPane.showMessageDialog(null, "Usted ha desconectado con la base de datos, vuelvela a conectar cuando desee");
+            conectado = false;
+        });
+        vista.conexionItem.addActionListener(e->{
+
+            vista.conexionItem.setEnabled(false);
+            vista.desconectar.setEnabled(true);
+            modelo.conectar();
+            refrescarTodo();
+            JOptionPane.showMessageDialog(null, "Usted ha conectado con la base de datos, todo funcionara a la perfección");
+            conectado = true;});
+        vista.salirItem.addActionListener(e->{
+            modelo.desconectar();
+            System.exit(0);});
     }
 
 
@@ -34,7 +63,6 @@ public class Controlador {
         vista.anadir_KitsButton.addActionListener(e -> adicionarKits());
         vista.eliminar_KitsButton.addActionListener(e -> eliminarKits());
         vista.modificar_KitsButton.addActionListener(e -> modificarkits());
-       // vista.listaKits.setCellSelectionEnabled(true);
         ListSelectionModel kitsModelSeleccion = vista.listaKits.getSelectionModel();
         kitsModelSeleccion.addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()
@@ -49,8 +77,8 @@ public class Controlador {
                     vista.fecha_ActualizacionKits.setDate(k.getFechaDeActualizacion().toLocalDate());
                     vista.precioKit.setText(String.valueOf(k.getPrecio()));
                     vista.valoracionSliderKit.setValue( k.getValoracion());
-                    vista.comboBoxEmpresaKit.setSelectedItem(k.getIdEmpresa());
-                    vista.comboBoxProductoKits.setSelectedItem(k.getIdProducto());
+                    vista.comboBoxEmpresaKit.setSelectedItem(k.getEmpresa());
+                    vista.comboBoxProductoKits.setSelectedItem(k.getProducto());
 
 
                 } else if (e.getValueIsAdjusting()
@@ -68,8 +96,11 @@ public class Controlador {
     }
 
     private void modificarkits() {
+        if(!estaConectado())
+        {
+            return;
+        }
         if (vista.listaKits.getSelectedIndex() == -1) {
-            //no se ha seleccionado ninguna fila
             return;
         }
 
@@ -87,10 +118,10 @@ public class Controlador {
         }
 
         if (vista.comboBoxEmpresaKit.getSelectedIndex() >= 0) {
-            p.setIdEmpresa((Empresa) vista.comboBoxEmpresaKit.getSelectedItem());
+            p.setEmpresa((Empresa) vista.comboBoxEmpresaKit.getSelectedItem());
         }
         if (vista.comboBoxProductoKits.getSelectedIndex() >= 0) {
-            p.setIdProducto((Producto) vista.comboBoxProductoKits.getSelectedItem());
+            p.setProducto((Producto) vista.comboBoxProductoKits.getSelectedItem());
         }
 
         if (p.valido()) {
@@ -107,8 +138,11 @@ public class Controlador {
 
 
     private void eliminarKits() {
+        if(!estaConectado())
+        {
+            return;
+        }
         if (vista.listaKits.getSelectedIndex() == -1) {
-            //no se ha seleccionado ninguna fila
             return;
         }
         vista.crearDialogoSeguridad();
@@ -217,7 +251,10 @@ public class Controlador {
 
 
     private void modificarProducto() {
-
+        if(!estaConectado())
+        {
+            return;
+        }
         if (vista.listaProducto.getSelectedIndex() == -1) {
             //no se ha seleccionado ninguna fila
             return;
@@ -254,6 +291,10 @@ public class Controlador {
     }
 
     private void eliminarProducto() {
+        if(!estaConectado())
+        {
+            return;
+        }
         if (vista.listaProducto.getSelectedIndex() == -1) {
             //no se ha seleccionado ninguna fila
             return;
@@ -325,6 +366,10 @@ public class Controlador {
 
 
     private void adicionarProducto() {
+        if(!estaConectado())
+        {
+            return;
+        }
         Producto p = new Producto();
         p.setNombre(vista.nombreProducto.getText());
         p.setDescripcion(vista.descripcionProducto.getText());
@@ -361,7 +406,10 @@ public class Controlador {
     //parte de empresa
 
     private void eliminarEmpresas() {
-
+        if(!estaConectado())
+        {
+            return;
+        }
         if (vista.listaEmpresa.getSelectedIndex() == -1) {
             //no se ha seleccionado ninguna fila
             return;
@@ -387,6 +435,10 @@ public class Controlador {
     }
 
     private void modificarEmpresas() {
+        if(!estaConectado())
+        {
+            return;
+        }
         if (vista.listaEmpresa.getSelectedIndex()==-1) {
             //no se ha seleccionado ninguna fila
             return;
@@ -423,7 +475,10 @@ public class Controlador {
     }
 
     private void adicionarEmpresas() {
-
+        if(!estaConectado())
+        {
+            return;
+        }
         Empresa p = new Empresa();
         p.setNombre(vista.nombreEmpresa.getText());
         p.setDescripcion(vista.descripcionEmpresa.getText());
@@ -457,8 +512,22 @@ public class Controlador {
 
     }
 
+    private boolean estaConectado(){
+
+        if (!conectado) {
+            JOptionPane.showMessageDialog(null, "No has conectado con la BBDD",
+                    "Error de conexión", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
 
     private void adicionarKits() {
+        if(!estaConectado())
+        {
+            return;
+        }
         KitEducativo p = new KitEducativo();
         p.setNombre(vista.nombreKit.getText());
         p.setDescripcion(vista.descripcionKit.getText());
@@ -475,10 +544,10 @@ public class Controlador {
 
 
         if (vista.comboBoxEmpresaKit.getSelectedIndex() >= 0) {
-            p.setIdEmpresa((Empresa) vista.comboBoxEmpresaKit.getSelectedItem());
+            p.setEmpresa((Empresa) vista.comboBoxEmpresaKit.getSelectedItem());
         }
         if (vista.comboBoxProductoKits.getSelectedIndex() >= 0) {
-            p.setIdProducto((Producto) vista.comboBoxProductoKits.getSelectedItem());
+            p.setProducto((Producto) vista.comboBoxProductoKits.getSelectedItem());
         }
 
 
