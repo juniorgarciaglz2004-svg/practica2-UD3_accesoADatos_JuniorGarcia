@@ -15,7 +15,11 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Properties;
 
+/**
+ * Clase modelo que permite manipular la base de datos y configuracion
+ */
 public class Modelo {
+
     private String ip;
     private String user;
     private String password;
@@ -23,14 +27,19 @@ public class Modelo {
     public String deletePass;
     SessionFactory sessionFactory;
 
+    /**
+     * Constructor de la clase que inicializa las propiedades de conexion
+     */
     public Modelo() {
         getPropValues();
     }
 
+
+
     private void getPropValues() {
         InputStream inputStream = null;
         try {
-            Properties prop = new Properties();
+           Properties prop = new Properties();
             String propFileName = "config.properties";
 
             inputStream = new FileInputStream(propFileName);
@@ -52,6 +61,9 @@ public class Modelo {
         }
     }
 
+
+
+
     void conectar() {
 
 
@@ -62,30 +74,13 @@ public class Modelo {
         //Indico la clase mapeada con anotaciones
         configuracion.addAnnotatedClass(practica.hibernate.Empresa.class);
         configuracion.addAnnotatedClass(KitEducativo.class);
-        configuracion.addAnnotatedClass(practica.hibernate.Producto.class);
-
-
-        //Creamos un objeto ServiceRegistry a partir de los parámetros de configuración
-        //Esta clase se usa para gestionar y proveer de acceso a servicios
+        configuracion.addAnnotatedClass(Producto.class);
         StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(
                 configuracion.getProperties()).build();
-
-        //finalmente creamos un objeto sessionfactory a partir de la configuracion y del registro de servicios
         sessionFactory = configuracion.buildSessionFactory(ssr);
 
     }
 
-    private String leerFichero() throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/mysql.sql")) ) ;
-        String linea;
-        StringBuilder stringBuilder = new StringBuilder();
-        while ((linea = reader.readLine()) != null) {
-            stringBuilder.append(linea);
-            stringBuilder.append(" ");
-        }
-
-        return stringBuilder.toString();
-    }
 
     void desconectar() {
 
@@ -96,6 +91,10 @@ public class Modelo {
 
     //PARTE PRODUCTO
 
+    /**
+     * Obtiene el listado de productos
+     * @return un listado de productos
+     */
     public ArrayList<Producto> obtenerProductos(){
 
         Session sesion = sessionFactory.openSession();
@@ -112,7 +111,10 @@ public class Modelo {
 
     //PARTE KIT EDUCATIVO
 
-
+    /**
+     * Obtiene el listado de kits educativo
+     * @return un listado de kits educativo
+     */
 
     public ArrayList<KitEducativo> obtenerKitEducativo()  {
 
@@ -129,7 +131,10 @@ public class Modelo {
     //PARTE EMPRESA
 
 
-
+    /**
+     * Obtiene el listado de empresas
+     * @return un listado de empresas
+     */
 
     public ArrayList<Empresa> obtenerEmpresas() {
 
@@ -141,9 +146,13 @@ public class Modelo {
     }
 
 
+    /**
+     * Inserta un objeto en la base de datos
+     * @param o Objeto a insertar
+     */
 
     void insertar(Object o) {
-        //Obtengo una session a partir de la factoria de sesiones
+
         Session sesion = sessionFactory.openSession();
 
         sesion.beginTransaction();
@@ -153,9 +162,11 @@ public class Modelo {
         sesion.close();
     }
 
-    /***
-     * Modificar un objeto de la BBDD
-     * @param o objeto a modificar en la BBDD
+
+
+    /**
+     * actualiza un objeto en la base de datos
+     * @param o Objeto a actualizar
      */
     void modificar(Object o) {
         Session sesion = sessionFactory.openSession();
@@ -165,9 +176,9 @@ public class Modelo {
         sesion.close();
     }
 
-    /***
-     * Eliminar un objeto de la BBDD
-     * @param o objeto a eliminar en la BBDD
+    /**
+     * elimina un objeto en la base de datos
+     * @param o Objeto a eliminar
      */
     void eliminar(Object o) {
         Session sesion = sessionFactory.openSession();

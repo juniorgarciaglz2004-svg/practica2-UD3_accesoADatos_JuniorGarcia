@@ -12,13 +12,21 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Clase controlador para la interaccion entre la vista y el modelo
+ */
+
 public class Controlador {
     private boolean refrescar;
     private Modelo modelo;
     private Vista vista;
     private boolean conectado;
 
-
+    /**
+     * Constructor De La Clase
+     * @param modelo Modelo con las operaciones de la base de datos
+     * @param vista Vista conteniendo los elementos de gui
+     */
     public Controlador(Modelo modelo, Vista vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -30,6 +38,9 @@ public class Controlador {
 
     }
 
+    /**
+     * Adiciona los listeners para las acciones del menu
+     */
     private void adicionarListenersMenu(){
 
 
@@ -95,6 +106,9 @@ public class Controlador {
         });
     }
 
+    /**
+     * Actualiza el kit seleccionado
+     */
     private void modificarkits() {
         if(!estaConectado())
         {
@@ -136,7 +150,9 @@ public class Controlador {
 
     }
 
-
+    /**
+    Elimina el kit seleccionado
+     */
     private void eliminarKits() {
         if(!estaConectado())
         {
@@ -165,6 +181,9 @@ public class Controlador {
 
     }
 
+    /**
+    Refresca todos los campos
+     */
     private void refrescarTodo() {
         resfrescarProductos();
         resfrecarEmpresa();
@@ -249,14 +268,16 @@ public class Controlador {
 
     }
 
-
+    /**
+     * Actualiza el producto seleeccionado
+     */
     private void modificarProducto() {
         if(!estaConectado())
         {
             return;
         }
         if (vista.listaProducto.getSelectedIndex() == -1) {
-            //no se ha seleccionado ninguna fila
+
             return;
         }
 
@@ -290,13 +311,15 @@ public class Controlador {
 
     }
 
+    /**
+     * Elimina el producto seleccionado
+     */
     private void eliminarProducto() {
         if(!estaConectado())
         {
             return;
         }
         if (vista.listaProducto.getSelectedIndex() == -1) {
-            //no se ha seleccionado ninguna fila
             return;
         }
 
@@ -364,6 +387,9 @@ public class Controlador {
     }
 
 
+    /**
+     * Adiciona un producto
+     */
 
     private void adicionarProducto() {
         if(!estaConectado())
@@ -405,13 +431,16 @@ public class Controlador {
 
     //parte de empresa
 
+    /**
+     * Elimina la empresa seleccionada
+     */
     private void eliminarEmpresas() {
         if(!estaConectado())
         {
             return;
         }
         if (vista.listaEmpresa.getSelectedIndex() == -1) {
-            //no se ha seleccionado ninguna fila
+
             return;
         }
 
@@ -434,6 +463,9 @@ public class Controlador {
 
     }
 
+    /**
+     * Modifica la empresa seleccionada
+     */
     private void modificarEmpresas() {
         if(!estaConectado())
         {
@@ -473,6 +505,10 @@ public class Controlador {
         }
 
     }
+
+    /**
+     * Adiciona una empresa
+     */
 
     private void adicionarEmpresas() {
         if(!estaConectado())
@@ -522,7 +558,9 @@ public class Controlador {
         return true;
     }
 
-
+    /**
+     * Adiciona un kit educativo
+     */
     private void adicionarKits() {
         if(!estaConectado())
         {
